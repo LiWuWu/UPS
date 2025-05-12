@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>升级至优选店铺</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .upgrade-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        
+        .progress-container {
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+        
+        .progress-bar::after {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 33.33%;
+            height: 4px;
+            background-color: #3498db;
+            z-index: 2;
+        }
+        
+        .step {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .step-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .step.active .step-icon {
+            background-color: #3498db;
+        }
+        
+        .step.completed .step-icon {
+            background-color: #2ecc71;
+        }
+        
+        .step-label {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .step.active .step-label {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .requirement-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .requirement-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .status-pending {
+            background-color: #f39c12;
+            color: white;
+        }
+        
+        .status-completed {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .requirement-progress {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #3498db;
+            border-radius: 4px;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+            border: none;
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>升级至优选店铺</h1>
+            <p class="subtitle">完成以下步骤，提升您的店铺等级</p>
+        </header>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="step active">
+                    <div class="step-icon">1</div>
+                    <div class="step-label">确认资格</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">2</div>
+                    <div class="step-label">缴纳保证金</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <div class="step-label">完成升级</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="upgrade-form">
+            <h2>第一步：确认升级资格</h2>
+            <p>请确认您的店铺满足以下升级条件：</p>
+            
+            <div class="requirement-card">
+                <div class="requirement-status">
+                    <h3>合作运营时间</h3>
+                    <span class="status-badge status-completed">已满足</span>
+                </div>
+                <p>要求：至少3个月的合作运营时间</p>
+                <p>当前：4个月</p>
+                <div class="requirement-progress">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+            </div>
+            
+            <div class="requirement-card">
+                <div class="requirement-status">
+                    <h3>订单保证金</h3>
+                    <span class="status-badge status-pending">未满足</span>
+                </div>
+                <p>要求：¥5,000订单保证金</p>
+                <p>当前：¥2,000</p>
+                <div class="requirement-progress">
+                    <div class="progress-fill" style="width: 40%;"></div>
+                </div>
+                <div class="form-group" style="margin-top: 15px;">
+                    <label for="deposit-amount">补充订单保证金金额</label>
+                    <input type="number" id="deposit-amount" class="form-control" value="3000" min="0">
+                </div>
+            </div>
+            
+            <div class="requirement-card">
+                <div class="requirement-status">
+                    <h3>合作保证金</h3>
+                    <span class="status-badge status-pending">未满足</span>
+                </div>
+                <p>要求：¥10,000合作保证金</p>
+                <p>当前：¥0</p>
+                <div class="requirement-progress">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+                <div class="form-group" style="margin-top: 15px;">
+                    <label for="cooperation-deposit">缴纳合作保证金金额</label>
+                    <input type="number" id="cooperation-deposit" class="form-control" value="10000" min="0">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="payment-method">选择支付方式</label>
+                <select id="payment-method" class="form-control">
+                    <option value="balance">账户余额支付</option>
+                    <option value="alipay">支付宝</option>
+                    <option value="wechat">微信支付</option>
+                    <option value="bank">银行转账</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="agreement"> 
+                    我已阅读并同意《优选店铺服务协议》和《保证金管理规则》
+                </label>
+            </div>
+            
+            <div class="btn-container">
+                <a href="index.html" class="btn btn-secondary">返回</a>
+                <a href="upgrade-preferred-payment.html" class="btn btn-primary">下一步：缴纳保证金</a>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2>常见问题</h2>
+            <div class="faq-item">
+                <h3>保证金有什么用途？</h3>
+                <p>订单保证金用于保障消费者权益，合作保证金用于确保店铺遵守平台规则和服务标准。</p>
+            </div>
+            <div class="faq-item">
+                <h3>保证金可以退还吗？</h3>
+                <p>在您决定终止与平台的合作后，保证金将在结算所有订单后退还（扣除相应费用）。</p>
+            </div>
+            <div class="faq-item">
+                <h3>升级后有哪些具体权益？</h3>
+                <p>优选店铺将享受更低的佣金比例、优先展示位置、专属客户经理等特权。详情可查看《优选店铺权益说明》。</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

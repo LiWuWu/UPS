@@ -1,0 +1,322 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: #2c3e50;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    font-size: 16px;
+}
+
+.current-level {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+}
+
+.level-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 30px;
+    color: white;
+}
+
+.level-badge.novice {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.level-badge.preferred {
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+}
+
+.level-badge.enterprise {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.level-icon {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.level-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.level-info {
+    flex: 1;
+}
+
+.level-info p {
+    margin-bottom: 8px;
+}
+
+.upgrade-path {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.level-card {
+    flex: 1;
+    min-width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.level-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+.level-card.current {
+    border: 2px solid #3498db;
+}
+
+.level-header {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.level-header h2 {
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+.level-tag {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background-color: #e0e0e0;
+    color: #555;
+}
+
+.level-card.current .level-tag {
+    background-color: #3498db;
+    color: white;
+}
+
+.level-content {
+    padding: 20px;
+}
+
+.benefits {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+.benefits li {
+    padding: 8px 0;
+    position: relative;
+    padding-left: 25px;
+}
+
+.benefits li:before {
+    content: "✓";
+    color: #2ecc71;
+    position: absolute;
+    left: 0;
+}
+
+.requirements {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.requirements h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.requirements ul {
+    list-style-type: none;
+    margin-bottom: 15px;
+}
+
+.requirements li {
+    padding: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.level-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #bdc3c7;
+    padding: 0 15px;
+}
+
+.btn-upgrade {
+    display: block;
+    text-align: center;
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-upgrade:hover {
+    background-color: #2980b9;
+}
+
+.upgrade-benefits {
+    margin-bottom: 50px;
+}
+
+.upgrade-benefits h2 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.benefits-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.benefits-table th, .benefits-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.benefits-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.benefits-table tr:last-child td {
+    border-bottom: none;
+}
+
+.benefits-table th:first-child, .benefits-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+}
+
+.faq-section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.faq-section h2 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.faq-item h3 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    color: #555;
+}
+
+@media (max-width: 992px) {
+    .upgrade-path {
+        flex-direction: column;
+    }
+    
+    .level-card {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    
+    .level-arrow {
+        transform: rotate(90deg);
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .current-level {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .level-badge {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .benefits-table {
+        font-size: 14px;
+    }
+    
+    .benefits-table th, .benefits-table td {
+        padding: 10px 8px;
+    }
+}

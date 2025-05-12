@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缴纳保证金 - 优选店铺升级</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .upgrade-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        
+        .progress-container {
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+        
+        .progress-bar::after {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 66.66%;
+            height: 4px;
+            background-color: #3498db;
+            z-index: 2;
+        }
+        
+        .step {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .step-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .step.active .step-icon {
+            background-color: #3498db;
+        }
+        
+        .step.completed .step-icon {
+            background-color: #2ecc71;
+        }
+        
+        .step-label {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .step.active .step-label {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .payment-summary {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .summary-row:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 18px;
+            padding-top: 15px;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .payment-method {
+            flex: 1;
+            min-width: 200px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .payment-method.active {
+            border-color: #3498db;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .payment-method img {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+        }
+        
+        .payment-method-info {
+            flex: 1;
+        }
+        
+        .payment-method-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .payment-method-desc {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+        
+        .qr-code-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background-color: #f8f9fa;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .qr-code img {
+            width: 180px;
+            height: 180px;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+            border: none;
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>缴纳保证金</h1>
+            <p class="subtitle">完成支付，升级至优选店铺</p>
+        </header>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="step completed">
+                    <div class="step-icon">✓</div>
+                    <div class="step-label">确认资格</div>
+                </div>
+                <div class="step active">
+                    <div class="step-icon">2</div>
+                    <div class="step-label">缴纳保证金</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <div class="step-label">完成升级</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="upgrade-form">
+            <h2>第二步：缴纳保证金</h2>
+            
+            <div class="payment-summary">
+                <h3>支付明细</h3>
+                <div class="summary-row">
+                    <span>补充订单保证金</span>
+                    <span>¥3,000.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>合作保证金</span>
+                    <span>¥10,000.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>总计支付金额</span>
+                    <span>¥13,000.00</span>
+                </div>
+            </div>
+            
+            <h3>选择支付方式</h3>
+            <div class="payment-methods">
+                <div class="payment-method active">
+                    <img src="https://via.placeholder.com/40/3498db/FFFFFF?text=W" alt="微信支付">
+                    <div class="payment-method-info">
+                        <div class="payment-method-name">微信支付</div>
+                        <div class="payment-method-desc">使用微信扫码支付</div>
+                    </div>
+                </div>
+                
+                <div class="payment-method">
+                    <img src="https://via.placeholder.com/40/1abc9c/FFFFFF?text=A" alt="支付宝">
+                    <div class="payment-method-info">
+                        <div class="payment-method-name">支付宝</div>
+                        <div class="payment-method-desc">使用支付宝扫码支付</div>
+                    </div>
+                </div>
+                
+                <div class="payment-method">
+                    <img src="https://via.placeholder.com/40/34495e/FFFFFF?text=B" alt="银行转账">
+                    <div class="payment-method-info">
+                        <div class="payment-method-name">银行转账</div>
+                        <div class="payment-method-desc">使用银行卡转账支付</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="qr-code-container">
+                <div class="qr-code">
+                    <img src="https://via.placeholder.com/180/FFFFFF/000000?text=支付二维码" alt="支付二维码">
+                </div>
+                <p>请使用微信扫描二维码完成支付</p>
+                <p>支付金额：<strong>¥13,000.00</strong></p>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <p>支付完成后，系统将自动验证</p>
+                <p>验证时间约为1-3分钟，请耐心等待</p>
+            </div>
+            
+            <div class="btn-container">
+                <a href="upgrade-preferred.html" class="btn btn-secondary">返回上一步</a>
+                <a href="upgrade-preferred-success.html" class="btn btn-primary">我已完成支付</a>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2>常见问题</h2>
+            <div class="faq-item">
+                <h3>支付遇到问题怎么办？</h3>
+                <p>如果您在支付过程中遇到任何问题，请联系客服热线：400-123-4567，或添加客服微信：ShopService</p>
+            </div>
+            <div class="faq-item">
+                <h3>支付成功但系统未更新怎么办？</h3>
+                <p>支付成功后，系统一般会在1-3分钟内完成验证。如超过5分钟仍未更新，请点击"联系客服"获取帮助。</p>
+            </div>
+            <div class="faq-item">
+                <h3>保证金可以退还吗？</h3>
+                <p>在您决定终止与平台的合作后，保证金将在结算所有订单后退还（扣除相应费用）。</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    // 移除所有active类
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    // 为当前点击的方法添加active类
+                    this.classList.add('active');
+                    
+                    // 这里可以根据选择的支付方式更新二维码图片
+                    const methodName = this.querySelector('.payment-method-name').textContent;
+                    document.querySelector('.qr-code-container p').textContent = `请使用${methodName}扫描二维码完成支付`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
