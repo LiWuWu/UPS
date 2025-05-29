@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>店铺升级系统 - 移动端</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 移动端特定样式 */
+        body {
+            background-color: #f5f7fa;
+            padding: 0;
+            margin: 0;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        .container {
+            padding: 16px;
+            max-width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .current-level {
+            flex-direction: column;
+            text-align: center;
+            padding: 20px 16px;
+            margin-bottom: 24px;
+        }
+
+        .level-badge {
+            margin: 0 auto 16px;
+            width: 80px;
+            height: 80px;
+        }
+
+        .level-info {
+            width: 100%;
+        }
+
+        .upgrade-path {
+            flex-direction: column;
+        }
+
+        .level-card {
+            width: 100%;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .level-arrow {
+            transform: rotate(90deg);
+            margin: 8px 0;
+            text-align: center;
+        }
+
+        .level-header {
+            padding: 16px;
+        }
+
+        .level-header h2 {
+            font-size: 20px;
+        }
+
+        .level-content {
+            padding: 16px;
+        }
+
+        .benefits li {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .requirements {
+            margin-top: 16px;
+        }
+
+        .requirements h3 {
+            font-size: 16px;
+        }
+
+        .requirements ul {
+            font-size: 14px;
+        }
+
+        .btn-upgrade {
+            width: 100%;
+            padding: 12px 0;
+            text-align: center;
+            margin-top: 16px;
+            font-size: 16px;
+        }
+
+        .benefits-table {
+            font-size: 14px;
+            margin: 16px 0;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .benefits-table th,
+        .benefits-table td {
+            padding: 12px 8px;
+            white-space: nowrap;
+        }
+
+        .faq-section {
+            padding: 16px;
+            margin-top: 24px;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+        }
+
+        .faq-item h3 {
+            font-size: 16px;
+        }
+
+        .faq-item p {
+            font-size: 14px;
+        }
+
+        /* iPhone 15 特定适配 */
+        @media only screen and (device-width: 393px) and (device-height: 852px) {
+            .container {
+                padding-top: env(safe-area-inset-top);
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>店铺升级中心</h1>
+            <p class="subtitle">提升您的店铺等级，享受更多特权与收益</p>
+        </header>
+        
+        <div class="current-level">
+            <div class="level-badge novice">
+                <span class="level-icon">🏪</span>
+                <span class="level-name">新手店铺</span>
+            </div>
+            <div class="level-info">
+                <p>当前等级：<strong>新手店铺</strong></p>
+                <p>店铺ID：SH20231205</p>
+                <p>入驻时间：2023-10-01</p>
+            </div>
+        </div>
+        
+        <div class="upgrade-path">
+            <div class="level-card current">
+                <div class="level-header">
+                    <h2>新手店铺</h2>
+                    <span class="level-tag">当前等级</span>
+                </div>
+                <div class="level-content">
+                    <ul class="benefits">
+                        <li>基础店铺功能</li>
+                        <li>标准佣金比例</li>
+                        <li>基础客户支持</li>
+                    </ul>
+                    <div class="requirements">
+                        <p>入驻即可获得</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="level-arrow">↓</div>
+            
+            <div class="level-card">
+                <div class="level-header">
+                    <h2>优选店铺</h2>
+                    <span class="level-tag">可升级</span>
+                </div>
+                <div class="level-content">
+                    <ul class="benefits">
+                        <li>优先展示位置</li>
+                        <li>降低佣金比例</li>
+                        <li>专属客户经理</li>
+                    </ul>
+                    <div class="requirements">
+                        <h3>升级条件</h3>
+                        <ul>
+                            <li>订单保证金：¥5,000</li>
+                            <li>合作运营时间：≥3个月</li>
+                            <li>合作保证金：¥10,000</li>
+                        </ul>
+                        <a href="upgrade-preferred.html" class="btn-upgrade">立即升级</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="level-arrow">↓</div>
+            
+            <div class="level-card">
+                <div class="level-header">
+                    <h2>企业店铺</h2>
+                    <span class="level-tag">高级等级</span>
+                </div>
+                <div class="level-content">
+                    <ul class="benefits">
+                        <li>首页推荐位置</li>
+                        <li>最低佣金比例</li>
+                        <li>定制化营销支持</li>
+                        <li>专属技术支持</li>
+                    </ul>
+                    <div class="requirements">
+                        <h3>升级条件</h3>
+                        <ul>
+                            <li>订单保证金：¥20,000</li>
+                            <li>合作运营时间：≥6个月</li>
+                            <li>合作保证金：¥50,000</li>
+                        </ul>
+                        <a href="upgrade-enterprise.html" class="btn-upgrade">立即升级</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="upgrade-benefits">
+            <h2>升级优势对比</h2>
+            <div style="overflow-x: auto;">
+                <table class="benefits-table">
+                    <thead>
+                        <tr>
+                            <th>功能特权</th>
+                            <th>新手店铺</th>
+                            <th>优选店铺</th>
+                            <th>企业店铺</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>佣金比例</td>
+                            <td>8%</td>
+                            <td>6%</td>
+                            <td>4%</td>
+                        </tr>
+                        <tr>
+                            <td>客户支持</td>
+                            <td>基础支持</td>
+                            <td>专属客户经理</td>
+                            <td>VIP专线支持</td>
+                        </tr>
+                        <tr>
+                            <td>营销资源</td>
+                            <td>基础推广</td>
+                            <td>优先展示</td>
+                            <td>定制营销方案</td>
+                        </tr>
+                        <tr>
+                            <td>技术支持</td>
+                            <td>标准支持</td>
+                            <td>优先响应</td>
+                            <td>专属技术团队</td>
+                        </tr>
+                        <tr>
+                            <td>提现速度</td>
+                            <td>T+3</td>
+                            <td>T+1</td>
+                            <td>实时提现</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2>常见问题</h2>
+            <div class="faq-item">
+                <h3>如何查看我的升级进度？</h3>
+                <p>您可以在店铺管理后台的"店铺等级"页面查看当前的升级进度和条件完成情况。</p>
+            </div>
+            <div class="faq-item">
+                <h3>升级后可以降级吗？</h3>
+                <p>一般情况下不会自动降级，但如果违反平台规则或长期不满足等级条件，可能会被降级。</p>
+            </div>
+            <div class="faq-item">
+                <h3>保证金可以退还吗？</h3>
+                <p>在您决定终止与平台的合作后，保证金将在结算所有订单后退还（扣除相应费用）。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
