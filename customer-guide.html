@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店铺升级指南 - 新手引导</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .guide-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .guide-header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .guide-header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .guide-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .step-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .step-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .step-title {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .step-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .step-action {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .step-action:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .benefits-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefits-title {
+            text-align: center;
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+
+        .benefit-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .benefit-title {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .benefit-desc {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .cta-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .cta-subtitle {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .faq-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .guide-header h1 {
+                font-size: 28px;
+            }
+            
+            .step-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="guide-container">
+        <div class="guide-header">
+            <h1>🚀 店铺升级完整指南</h1>
+            <p>从新手到企业级店铺，一步步提升您的业务价值</p>
+        </div>
+
+        <div class="step-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <span class="step-icon">📋</span>
+                <h3 class="step-title">了解当前状态</h3>
+                <p class="step-description">查看您的店铺当前等级、权益和升级条件，了解下一步的发展方向。</p>
+                <a href="index.html" class="step-action">查看店铺状态</a>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <span class="step-icon">⭐</span>
+                <h3 class="step-title">选择升级目标</h3>
+                <p class="step-description">根据您的业务需求，选择合适的店铺等级，享受对应的特权和服务。</p>
+                <a href="upgrade-preferred.html" class="step-action">开始升级</a>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <span class="step-icon">💰</span>
+                <h3 class="step-title">完成资金准备</h3>
+                <p class="step-description">准备相应的保证金和合作资金，确保升级流程顺利进行。</p>
+                <a href="upgrade-preferred-payment.html" class="step-action">资金准备</a>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <span class="step-icon">🤝</span>
+                <h3 class="step-title">选择合作模式</h3>
+                <p class="step-description">了解不同的合作方式，选择最适合您业务发展的合作模式。</p>
+                <a href="cooperation-mode-management.html" class="step-action">合作模式</a>
+            </div>
+        </div>
+
+        <div class="benefits-section">
+            <h2 class="benefits-title">升级后您将获得</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">📈</span>
+                    <h4 class="benefit-title">更低佣金比例</h4>
+                    <p class="benefit-desc">从8%降至4%，大幅提升您的利润空间</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🎯</span>
+                    <h4 class="benefit-title">优先展示位置</h4>
+                    <p class="benefit-desc">获得更多曝光机会，提升店铺知名度</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">👨‍💼</span>
+                    <h4 class="benefit-title">专属客户经理</h4>
+                    <p class="benefit-desc">一对一服务，解决您的所有问题</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">⚡</span>
+                    <h4 class="benefit-title">快速提现</h4>
+                    <p class="benefit-desc">从T+3提升至实时提现，资金周转更灵活</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🛠️</span>
+                    <h4 class="benefit-title">技术支持</h4>
+                    <p class="benefit-desc">专业技术团队，确保您的业务稳定运行</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">📊</span>
+                    <h4 class="benefit-title">营销资源</h4>
+                    <p class="benefit-desc">定制化营销方案，助力业务快速增长</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 class="cta-title">准备好开始升级了吗？</h2>
+            <p class="cta-subtitle">立即开始您的店铺升级之旅，解锁更多商业机会</p>
+            <a href="index.html" class="cta-button">立即开始升级</a>
+        </div>
+
+        <div class="faq-section">
+            <h2 class="faq-title">常见问题解答</h2>
+            
+            <div class="faq-item">
+                <h4 class="faq-question">Q: 升级需要多长时间？</h4>
+                <p class="faq-answer">A: 一般情况下，完成资料提交和资金准备后，审核时间为1-3个工作日。</p>
+            </div>
+
+            <div class="faq-item">
+                <h4 class="faq-question">Q: 升级失败会退还保证金吗？</h4>
+                <p class="faq-answer">A: 如果因为平台原因导致升级失败，保证金将全额退还。如果是因为资料不符合要求，需要重新提交。</p>
+            </div>
+
+            <div class="faq-item">
+                <h4 class="faq-question">Q: 可以跳级升级吗？</h4>
+                <p class="faq-answer">A: 建议按照等级顺序逐步升级，这样可以更好地适应各个等级的要求和服务。</p>
+            </div>
+
+            <div class="faq-item">
+                <h4 class="faq-question">Q: 升级后如何联系专属客户经理？</h4>
+                <p class="faq-answer">A: 升级成功后，我们会在24小时内为您分配专属客户经理，并通过短信和邮件通知您联系方式。</p>
+            </div>
+
+            <div class="faq-item">
+                <h4 class="faq-question">Q: 不同等级的具体权益差异在哪里？</h4>
+                <p class="faq-answer">A: 主要体现在佣金比例、客户支持级别、营销资源、技术支持和提现速度等方面。等级越高，享受的服务越优质。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 添加一些交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为步骤卡片添加点击效果
+            const stepCards = document.querySelectorAll('.step-card');
+            stepCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const actionLink = this.querySelector('.step-action');
+                    if (actionLink) {
+                        window.location.href = actionLink.href;
+                    }
+                });
+            });
+
+            // 添加滚动动画效果
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // 观察所有卡片元素
+            const cards = document.querySelectorAll('.step-card, .benefit-item, .faq-item');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
